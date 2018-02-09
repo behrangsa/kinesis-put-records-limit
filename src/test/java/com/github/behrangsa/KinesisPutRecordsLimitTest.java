@@ -41,13 +41,13 @@ public class KinesisPutRecordsLimitTest {
                                                   .withCredentials(new DefaultAWSCredentialsProviderChain())
                                                   .build();
 
-//        deleteStream();
-//        createStream();
+        deleteStream();
+        createStream();
     }
 
     @AfterClass
     public static void destroy() throws Exception {
-//        deleteStream();
+        deleteStream();
     }
 
 
@@ -113,6 +113,7 @@ public class KinesisPutRecordsLimitTest {
 
             amazonKinesis.deleteStream(STREAM_NAME);
 
+            //noinspection InfiniteLoopStatement
             while (true) {
                 final String streamStatus = amazonKinesis.describeStream(STREAM_NAME)
                                                          .getStreamDescription()
